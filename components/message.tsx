@@ -1,6 +1,11 @@
 'use client';
 
-import type { ChatRequestOptions, Message } from 'ai';
+import type { ChatRequestOptions, Message as OriginalMessage } from 'ai';
+
+interface Message extends OriginalMessage {
+  verified?: boolean;
+  buying?: boolean;
+}
 import cx from 'classnames';
 import { motion } from 'framer-motion';
 import { memo, useEffect, useState, type Dispatch, type SetStateAction } from 'react';
@@ -54,10 +59,13 @@ const PurePreviewMessage = ({
     //console.log('assistant message', message);
     return;
   }
+  let verified = false;
   if (message.content.length > 0 && message.content.endsWith("Verified with Context.")) {
     console.log("message.content");
     message.content = message.content.substring(0, message.content.length - "Verified with Context.".length);
+    // ts ingores this line
     message.verified = true;
+    //verified=true;
   }
   if (message.content.length > 0 && message.content === "[BUYING]") {
     console.log("buyiiiing");

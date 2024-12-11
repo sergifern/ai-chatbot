@@ -120,8 +120,6 @@ export function convertToUIMessages(
       role: message.role as Message['role'],
       content: textContent,
       toolInvocations,
-      buying:false,
-      verified:false,
     });
 
     return chatMessages;
