@@ -22,7 +22,7 @@ export const models: Array<Model> = [
   },
   {
     id: 'ctx',
-    label: 'GPT 4o + Context Protocol',
+    label: 'Context Protocol',
     apiIdentifier: 'gpt-4o',
     description: 'Using verified information',
   },
