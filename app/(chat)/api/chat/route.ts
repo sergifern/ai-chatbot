@@ -128,7 +128,7 @@ export async function POST(request: Request) {
   });
 }
 
-export const findRelevantContent = async (userQuery: string) => {
+const findRelevantContent = async (userQuery: string) => {
   console.log(userQuery);
   const response = await fetch(
     `http://localhost:8080/v1/internal/search?query=${encodeURIComponent(userQuery)}&topK=3`,

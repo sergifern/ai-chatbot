@@ -86,6 +86,8 @@ const Tool = ({
     } else {
       if (type === 'final-polish') {
         append({
+          verified: false,
+          buying: false,
           role: 'user',
           content:
             'Please add final polish and check for grammar, add section titles for better structure, and ensure everything reads smoothly.',
@@ -94,6 +96,8 @@ const Tool = ({
         setSelectedTool(null);
       } else if (type === 'request-suggestions') {
         append({
+          verified: false,
+          buying: false,
           role: 'user',
           content:
             'Please add suggestions you have that could improve the writing.',
@@ -238,6 +242,8 @@ const ReadingLevelSelector = ({
                   append({
                     role: 'user',
                     content: `Please adjust the reading level to ${LEVELS[currentLevel]} level.`,
+                    verified: false,
+                    buying: false,
                   });
 
                   setSelectedTool(null);
