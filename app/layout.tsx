@@ -6,9 +6,9 @@ import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chat.vercel.ai'),
-  title: 'Next.js Chatbot Template',
-  description: 'Next.js chatbot template using the AI SDK.',
+  metadataBase: new URL('https://chat.ctx.xyz'),
+  title: 'Context Chatbot',
+  description: 'Context chatbot using the RAG.',
 };
 
 export const viewport = {
@@ -56,11 +56,9 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased">
+      <body className="antialiased dark">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
           disableTransitionOnChange
         >
           <Toaster position="top-center" />

@@ -3,7 +3,7 @@
 import type { ChatRequestOptions, Message } from 'ai';
 import cx from 'classnames';
 import { motion } from 'framer-motion';
-import { memo, useState, type Dispatch, type SetStateAction } from 'react';
+import { memo, useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 
 import type { Vote } from '@/lib/db/schema';
 
@@ -12,6 +12,7 @@ import { DocumentToolCall, DocumentToolResult } from './document';
 import { PencilEditIcon, SparklesIcon } from './icons';
 import { Markdown } from './markdown';
 import { MessageActions } from './message-actions';
+import { MessageVerified } from './message-verified';
 import { PreviewAttachment } from './preview-attachment';
 import { Weather } from './weather';
 import equal from 'fast-deep-equal';
@@ -19,6 +20,7 @@ import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { MessageEditor } from './message-editor';
+import MessageBuying from './message-buying';
 
 const PurePreviewMessage = ({
   chatId,
@@ -46,6 +48,30 @@ const PurePreviewMessage = ({
   isReadonly: boolean;
 }) => {
   const [mode, setMode] = useState<'view' | 'edit'>('view');
+  const [isVerified, setIsVerified] = useState(false);
+
+  if (message.toolInvocations) {
+    //console.log('assistant message', message);
+    return;
+  }
+  if (message.content.length > 0 && message.content.endsWith("Verified with Context.")) {
+    console.log("message.content");
+    message.content = message.content.substring(0, message.content.length - "Verified with Context.".length);
+    message.verified = true;
+  }
+  if (message.content.length > 0 && message.content === "[BUYING]") {
+    console.log("buyiiiing");
+    message.content = "";
+    message.buying = true;
+  }
+  /*useEffect(() => {
+    if (message.content && message.content.endsWith("Verified with Context.")) {
+      message.content = message.content.substring(0, message.content.length - "Verified with Context.".length);
+      setIsVerified(true); // Set verified to true
+    } else {
+      setIsVerified(false); // Reset verified status
+    }
+  }, [message]); // This effect depends on message.content*/
 
   return (
     <motion.div
@@ -125,84 +151,19 @@ const PurePreviewMessage = ({
             </div>
           )}
 
-          {message.toolInvocations && message.toolInvocations.length > 0 && (
-            <div className="flex flex-col gap-4">
-              {message.toolInvocations.map((toolInvocation) => {
-                const { toolName, toolCallId, state, args } = toolInvocation;
-
-                if (state === 'result') {
-                  const { result } = toolInvocation;
-
-                  return (
-                    <div key={toolCallId}>
-                      {toolName === 'getWeather' ? (
-                        <Weather weatherAtLocation={result} />
-                      ) : toolName === 'createDocument' ? (
-                        <DocumentToolResult
-                          type="create"
-                          result={result}
-                          block={block}
-                          setBlock={setBlock}
-                          isReadonly={isReadonly}
-                        />
-                      ) : toolName === 'updateDocument' ? (
-                        <DocumentToolResult
-                          type="update"
-                          result={result}
-                          block={block}
-                          setBlock={setBlock}
-                          isReadonly={isReadonly}
-                        />
-                      ) : toolName === 'requestSuggestions' ? (
-                        <DocumentToolResult
-                          type="request-suggestions"
-                          result={result}
-                          block={block}
-                          setBlock={setBlock}
-                          isReadonly={isReadonly}
-                        />
-                      ) : (
-                        <pre>{JSON.stringify(result, null, 2)}</pre>
-                      )}
-                    </div>
-                  );
-                }
-                return (
-                  <div
-                    key={toolCallId}
-                    className={cx({
-                      skeleton: ['getWeather'].includes(toolName),
-                    })}
-                  >
-                    {toolName === 'getWeather' ? (
-                      <Weather />
-                    ) : toolName === 'createDocument' ? (
-                      <DocumentToolCall
-                        type="create"
-                        args={args}
-                        setBlock={setBlock}
-                        isReadonly={isReadonly}
-                      />
-                    ) : toolName === 'updateDocument' ? (
-                      <DocumentToolCall
-                        type="update"
-                        args={args}
-                        setBlock={setBlock}
-                        isReadonly={isReadonly}
-                      />
-                    ) : toolName === 'requestSuggestions' ? (
-                      <DocumentToolCall
-                        type="request-suggestions"
-                        args={args}
-                        setBlock={setBlock}
-                        isReadonly={isReadonly}
-                      />
-                    ) : null}
-                  </div>
-                );
-              })}
-            </div>
+          {message.verified && (
+            <MessageVerified
+              key={`verified-${message.id}`}
+              chatId={chatId}
+              message={message}
+              vote={vote}
+              isLoading={isLoading}
+            />
           )}
+
+          {message.buying && <MessageBuying />}
+  
+
 
           {!isReadonly && (
             <MessageActions

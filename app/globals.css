@@ -59,39 +59,39 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 252 20% 12%; /* A deeper and slightly bluer dark tone */
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 252 20% 12%; /* Match background */
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 252 20% 12%; /* Match background */
     --popover-foreground: 0 0% 98%;
-    --primary: 208.69 100% 24.18%;
+    --primary: 240 40% 41%; /* More saturated and slightly lighter blue */
     --primary-foreground: 207 100% 96%;
-    --secondary: 240 3.7% 15.9%;
+    --secondary: 260 15% 20%; /* A subtle hint of violet to complement the wine tones */
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --muted: 260 15% 20%; /* Match secondary */
+    --muted-foreground: 240 10% 70%; /* Lighter for better contrast */
+    --accent: 260 15% 20%; /* Match secondary */
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 345 68% 35%; /* A wine-red tone for destructive actions */
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 260 7% 35%; /* Match secondary */
+    --input: 260 15% 20%; /* Match secondary */
+    --ring: 260 21% 63%; /* A light bluish tone for focus rings */
+    --chart-1: 220 70% 50%; /* Kept the original blue for charts */
+    --chart-2: 160 60% 45%; /* Kept the original green-blue */
+    --chart-3: 30 80% 55%; /* Kept the original orange */
+    --chart-4: 280 65% 60%; /* Kept the original purple */
+    --chart-5: 340 75% 55%; /* Kept the original pink */
+    --sidebar-background: 252 20% 10%; /* Darker and bluer */
+    --sidebar-foreground: 240 5% 96%; /* Lighter for better visibility */
+    --sidebar-primary: 224.3 76.3% 48%; /* Kept the original light blue */
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+    --sidebar-accent: 260 15% 20%; /* Match secondary */
+    --sidebar-accent-foreground: 240 5% 96%; /* Lighter for better visibility */
+    --sidebar-border: 260 15% 20%; /* Match secondary */
+    --sidebar-ring: 217.2 91.2% 59.8%; /* Kept the original vivid blue */
+  }  
 }
 
 @layer base {

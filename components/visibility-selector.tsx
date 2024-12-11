@@ -28,14 +28,20 @@ const visibilities: Array<{
 }> = [
   {
     id: 'private',
-    label: 'Private',
-    description: 'Only you can access this chat',
+    label: '.madrid',
+    description: 'SmartCity chatbot to explore Madrid',
+    icon: <LockIcon />,
+  },
+  {
+    id: 'private',
+    label: '.pudong',
+    description: 'SmartCity chatbot to explore Pudong (Shanghai)',
     icon: <LockIcon />,
   },
   {
     id: 'public',
-    label: 'Public',
-    description: 'Anyone with the link can access this chat',
+    label: '.wine',
+    description: 'Discover everything about wine industry',
     icon: <GlobeIcon />,
   },
 ];
@@ -90,7 +96,7 @@ export function VisibilitySelector({
             className="gap-4 group/item flex flex-row justify-between items-center"
             data-active={visibility.id === visibilityType}
           >
-            <div className="flex flex-col gap-1 items-start">
+            <div className="flex flex-col gap-1 items-start cursor-not-allowed">
               {visibility.label}
               {visibility.description && (
                 <div className="text-xs text-muted-foreground">

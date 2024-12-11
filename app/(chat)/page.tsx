@@ -20,7 +20,7 @@ export default async function Page() {
       id={id}
       initialMessages={[]}
       selectedModelId={selectedModelId}
-      selectedVisibilityType="private"
+      selectedVisibilityType="public"
       isReadonly={false}
     />
   );
