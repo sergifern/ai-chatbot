@@ -6,13 +6,7 @@ export const SignOutForm = () => {
   return (
     <Form
       className="w-full"
-      action={async () => {
-        'use server';
-
-        await signOut({
-          redirectTo: '/',
-        });
-      }}
+      action='/api/auth/sign-out'
     >
       <button
         type="submit"
