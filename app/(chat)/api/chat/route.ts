@@ -130,8 +130,9 @@ export async function POST(request: Request) {
 
 const findRelevantContent = async (userQuery: string) => {
   console.log(userQuery);
+  const API_HOST = process.env.NEXT_PUBLIC_API_HOST;
   const response = await fetch(
-    `http://localhost:8080/v1/internal/search?query=${encodeURIComponent(userQuery)}&topK=3`,
+    `${API_HOST}/v1/internal/search?query=${encodeURIComponent(userQuery)}&topK=3`,
   );
   return response.json();
 };
