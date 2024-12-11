@@ -51,11 +51,7 @@ function PureMessages({
           block={block}
           setBlock={setBlock}
           isLoading={isLoading && messages.length - 1 === index}
-          vote={
-            votes
-              ? votes.find((vote) => vote.messageId === message.id)
-              : undefined
-          }
+          vote={undefined}
           setMessages={setMessages}
           reload={reload}
           isReadonly={isReadonly}

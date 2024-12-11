@@ -16,14 +16,14 @@ interface SuggestedActionsProps {
 function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
   const suggestedActions = [
     {
-      title: 'What is the weather',
-      label: 'in San Francisco?',
-      action: 'What is the weather in San Francisco?',
+      title: 'Give me list of',
+      label: ' Vallformosa Products',
+      action: 'Coneixes el celler Vallformosa? Te vins en llauna, quin nom te el producte?',
     },
     {
       title: 'Help me draft an essay',
       label: 'about Silicon Valley',
-      action: 'Help me draft a short essay about Silicon Valley',
+      action: 'Digam horari de la botiga Arreglos de Roba',
     },
   ];
 
@@ -41,7 +41,6 @@ function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
           <Button
             variant="ghost"
             onClick={async () => {
-              window.history.replaceState({}, '', `/chat/${chatId}`);
 
               append({
                 role: 'user',

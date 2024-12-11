@@ -29,6 +29,7 @@ export function MessageActions({
   const { mutate } = useSWRConfig();
   const [_, copyToClipboard] = useCopyToClipboard();
 
+  console.log('MessageActions');
   if (isLoading) return null;
   if (message.role === 'user') return null;
   if (message.toolInvocations && message.toolInvocations.length > 0)

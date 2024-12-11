@@ -25,11 +25,13 @@ export const authConfig = {
       }
 
       if (isOnChat) {
+        return true; // Always allow access to chat page
         if (isLoggedIn) return true;
         return false; // Redirect unauthenticated users to login page
       }
 
       if (isLoggedIn) {
+        return true;
         return Response.redirect(new URL('/', nextUrl as unknown as URL));
       }
 

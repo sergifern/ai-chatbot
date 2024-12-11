@@ -2,7 +2,7 @@ import { auth } from '@/app/(auth)/auth';
 import { getVotesByChatId, voteMessage } from '@/lib/db/queries';
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
+  /*const { searchParams } = new URL(request.url);
   const chatId = searchParams.get('chatId');
 
   if (!chatId) {
@@ -15,9 +15,9 @@ export async function GET(request: Request) {
     return new Response('Unauthorized', { status: 401 });
   }
 
-  const votes = await getVotesByChatId({ id: chatId });
+  const votes = await getVotesByChatId({ id: chatId });*/
 
-  return Response.json(votes, { status: 200 });
+  return Response.json({}, { status: 200 });
 }
 
 export async function PATCH(request: Request) {
