@@ -45,7 +45,7 @@ function PureChatHeader({
               }}
             >
               <PlusIcon />
-              <span className="md:sr-only">New Chat</span>
+              <span className="md:sr-only"></span>
             </Button>
           </TooltipTrigger>
           <TooltipContent>New Chat</TooltipContent>
