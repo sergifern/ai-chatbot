@@ -16,24 +16,14 @@ interface SuggestedActionsProps {
 function PureSuggestedActions({ chatId, append }: SuggestedActionsProps) {
   const suggestedActions = [
     {
-      title: 'Vi en llauna',
-      label: 'de Vallformosa',
-      action: 'Coneixes el celler Vallformosa? Te un producte de vi en llauna, quin nom te?',
+      title: 'List of products and pricing',
+      label: 'from Vallformosa',
+      action: 'List all products and pricing from Vallformosa',
     },
     {
-      title: 'Llista de productes i preus',
-      label: 'de Vallformosa',
-      action: 'Lista de productes i preus mes recent de Vallfromosa',
-    },
-    {
-      title: 'Campanya de Nadal',
-      label: 'de Vallformosa',
-      action: 'Te Vallfromosa alguna oferta especial para als seus productes?',
-    },
-    {
-      title: 'Importació de vi',
-      label: 'desde Pudong',
-      action: '我想从 Vallformosa 出口 1200 瓶 Vallformosa Brut Nature Reserve 到上海浦东。请提供相关信息，例如价格、重量等。',
+      title: 'Import wine',
+      label: 'from Pudong',
+      action: '我想要从Vallformosa进口120瓶Vallformosa Brut Nature Reserve到上海浦东。',
     },
   ];
 
